@@ -16,6 +16,7 @@ var server = app.listen(3000, () => {
 
 // panel
 app.get("/call/:extension", (req, res) => {
+  console.log(req.params.extension);
   exec(
     "twinkle --call " + req.params.extension + " --immediate --config /home/kiosek/.twinkle/8999.cfg --user=8999 --calleenumber=9000 --nogui",
     (error, stdout, stderr) => {
@@ -33,6 +34,7 @@ app.get("/call/:extension", (req, res) => {
 });
 
 app.get("/bye", (req, res) => {
+  console.log('bye');
   exec(
     "twinkle --cmd bye",
     (error, stdout, stderr) => {
